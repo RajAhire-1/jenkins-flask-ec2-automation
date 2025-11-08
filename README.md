@@ -1,4 +1,4 @@
-# 🚀 Automated Flask Authentication Deployment
+# AutoDeploy Flask Auth: CI/CD Pipeline with Jenkins & AWS
 **Continuous Integration & Deployment using Jenkins, GitHub & AWS EC2**
 
 ---
@@ -26,10 +26,9 @@ Every GitHub commit triggers Jenkins to pull the latest code, deploy it to EC2, 
 
 ## 🛠️ Tech Stack
 | Component | Technology |
-|------------|-------------|
+|-----------|-------------|
 | **Backend** | Python Flask |
 | **Frontend** | HTML, CSS, JavaScript |
-| **Database** | SQLite3 |
 | **CI/CD** | Jenkins |
 | **Cloud Infrastructure** | AWS EC2 (Ubuntu 22.04) |
 | **Version Control** | GitHub |
@@ -43,40 +42,32 @@ Every GitHub commit triggers Jenkins to pull the latest code, deploy it to EC2, 
 git add .
 git commit -m "Updated Flask app"
 git push origin master
-````
+```
 
 ### 2️⃣ Jenkins Pipeline Execution
-
-* Pulls latest GitHub commit
-* Copies files to EC2 via SSH
-* Installs dependencies (`requirements.txt`)
-* Starts Flask server in background
+- Pulls latest GitHub commit
+- Copies files to EC2 via SSH
+- Installs dependencies (`requirements.txt`)
+- Starts Flask server in background
 
 ---
 
 ## ⚙️ Jenkins Configuration
 
 ### 🧩 Credentials Setup
-
-Go to:
-`Manage Jenkins → Credentials → System → Global credentials`
+Go to: `Manage Jenkins → Credentials → System → Global credentials`
 
 Add:
+- **Kind:** SSH Username with private key
+- **ID:** `check-ssh-key`
+- **Username:** `ubuntu`
+- **Private Key:** (EC2 key content)
 
-* **Kind:** SSH Username with private key
-* **ID:** `check-ssh-key`
-* **Username:** `ubuntu`
-* **Private Key:** (EC2 key content)
-
-📸 **Screenshot: Jenkins Credentials**
 ![Jenkins Credentials](img/credentials.png)
-
----
 
 ### 🏗️ Pipeline Configuration
 
 **Jenkinsfile**
-
 ```groovy
 pipeline {
     agent any
@@ -137,16 +128,9 @@ pipeline {
 }
 ```
 
-📸 **Screenshot: Jenkins Pipeline Config**
 ![Jenkins Configuration](img/jenkins-cofiguration.png)
 
----
-
 ### 🧭 Jenkins Dashboard
-
-Shows all configured jobs and last run status.
-
-📸 **Screenshot: Jenkins Dashboard**
 ![Jenkins Dashboard](img/jenkins-dash.png)
 
 ---
@@ -154,32 +138,26 @@ Shows all configured jobs and last run status.
 ## 💻 Application Details
 
 ### 📂 Project Structure
-
 ```
 pythonapp/
 ├── app.py               # Flask Application
 ├── requirements.txt     # Dependencies
-├── templates/           # HTML Templates
-├── static/              # CSS, JS, Images
 ├── test/                # Unit Tests
 ├── Jenkinsfile          # CI/CD Pipeline
 └── README.md            # Documentation
 ```
 
-📸 **Screenshot: VS Code & Commits**
 ![Commit History](img/commits.png)
 
 ---
 
 ## ☁️ AWS EC2 Configuration
+- **Instance Name:** `pythonapp`
+- **Type:** `t2.micro`
+- **Region:** `ap-south-1 (Mumbai)`
+- **Public IP:** `3.110.103.246`
+- **Private IP:** `172.31.12.114`
 
-**Instance Name:** `pythonapp`
-**Type:** `t2.micro`
-**Region:** `ap-south-1 (Mumbai)`
-**Public IP:** `3.110.103.246`
-**Private IP:** `172.31.12.114`
-
-📸 **Screenshot: AWS EC2 Instance**
 ![AWS EC2 Instance](img/pythonappEc2.png)
 
 ---
@@ -187,16 +165,11 @@ pythonapp/
 ## 🌈 Flask Application UI
 
 ### ✨ Login Page
-
-A clean modern glassmorphism-style UI for login/signup.
-
-📸 **Screenshot: Login Page**
 ![Login Page](img/login-page.png)
 
 ---
 
 ## ⚙️ Manual Deployment (Optional)
-
 If you wish to deploy manually:
 
 ```bash
@@ -215,24 +188,21 @@ pip install -r requirements.txt
 python3 app.py --host=0.0.0.0 --port=5000
 ```
 
-Then open in browser:
-👉 `http://<EC2_PUBLIC_IP>:5000`
+Then open in browser: 👉 `http://<EC2_PUBLIC_IP>:5000`
 
 ---
 
 ## ✅ Key Features
-
-* 🔁 Fully Automated Deployment Pipeline
-* 🔐 Secure Login & Signup with Password Hashing
-* 🧩 SQLite Database for User Storage
-* 🖥️ Modern Animated UI
-* ⚙️ Continuous Integration with Jenkins
-* ☁️ AWS EC2 Cloud Hosting
+- 🔁 Fully Automated Deployment Pipeline
+- 🔐 Secure Login & Signup with Password Hashing
+- 🧩 SQLite Database for User Storage
+- 🖥️ Modern Animated UI
+- ⚙️ Continuous Integration with Jenkins
+- ☁️ AWS EC2 Cloud Hosting
 
 ---
 
 ## 🎯 Workflow Summary
-
 1. Developer commits & pushes code to GitHub
 2. Jenkins auto-triggers build pipeline
 3. Jenkins SSHs into EC2, deploys latest code
@@ -241,19 +211,16 @@ Then open in browser:
 
 ---
 
-## 📸 Deployment Flow (Diagram)
-
-![Deployment Diagram](img/jenkins-dash.png)
-
----
-
 ## 🧾 Logs & Debug
-
 To check logs on EC2:
-
 ```bash
 cd /home/ubuntu/pythonapp
 cat app.log
 ```
 
+---
 
+## 📞 Contact
+**Raj Ahire**  
+📧 Email: [rajahire326@gmail.com](rajahire326@gamil.com)
+🌐 GitHub: [https://github.com/RajAhire-1](https://github.com/RajAhire-1)
