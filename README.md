@@ -6,6 +6,7 @@
 ## 📘 Project Overview
 A fully automated CI/CD pipeline that deploys a **Flask-based Login/Signup application** to an AWS EC2 instance using **Jenkins**.  
 Every GitHub commit triggers Jenkins to pull the latest code, deploy it to EC2, install dependencies, and restart the Flask app automatically.
+![](img/Gemini_Generated_Image_yzbhrvyzbhrvyzbh.png)
 
 ---
 
