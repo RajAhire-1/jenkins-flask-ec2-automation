@@ -1,74 +1,87 @@
 # AutoDeploy Flask Auth: CI/CD Pipeline with Jenkins & AWS
+
 **Continuous Integration & Deployment using Jenkins, GitHub & AWS EC2**
 
 ---
 
-## 📘 Project Overview
-A fully automated CI/CD pipeline that deploys a **Flask-based Login/Signup application** to an AWS EC2 instance using **Jenkins**.  
+## Project Overview
+
+A fully automated CI/CD pipeline that deploys a **Flask-based Login/Signup application** to an AWS EC2 instance using **Jenkins**.
 Every GitHub commit triggers Jenkins to pull the latest code, deploy it to EC2, install dependencies, and restart the Flask app automatically.
-![](img/Gemini_Generated_Image_yzbhrvyzbhrvyzbh.png)
+
+![Architecture Diagram](img/Gemini_Generated_Image_yzbhrvyzbhrvyzbh.png)
 
 ---
 
-## 🌐 Live Application
-👉 **URL:** [http://3.110.103.246:5000](http://3.110.103.246:5000)
+## Live Application
+
+**URL:** [http://3.110.103.246:5000](http://3.110.103.246:5000)
 
 ---
 
-## 🧠 Architecture Overview
+## Architecture Overview
+
 **GitHub → Jenkins → AWS EC2 → Flask App (Port 5000)**
 
-- Developer pushes code to GitHub  
-- Jenkins automatically triggers pipeline  
-- Jenkins connects to EC2 via SSH  
-- EC2 deploys latest version and runs Flask app  
+* Developer pushes code to GitHub
+* Jenkins automatically triggers pipeline
+* Jenkins connects to EC2 via SSH
+* EC2 deploys latest version and runs Flask app
 
 ---
 
-## 🛠️ Tech Stack
-| Component | Technology |
-|-----------|-------------|
-| **Backend** | Python Flask |
-| **Frontend** | HTML, CSS, JavaScript |
-| **CI/CD** | Jenkins |
+## Tech Stack
+
+| Component                | Technology             |
+| ------------------------ | ---------------------- |
+| **Backend**              | Python Flask           |
+| **Frontend**             | HTML, CSS, JavaScript  |
+| **CI/CD**                | Jenkins                |
 | **Cloud Infrastructure** | AWS EC2 (Ubuntu 22.04) |
-| **Version Control** | GitHub |
+| **Version Control**      | GitHub                 |
 
 ---
 
-## 🔄 CI/CD Workflow
+## CI/CD Workflow
 
-### 1️⃣ Development & Git Versioning
+### 1. Development & Git Versioning
+
 ```bash
 git add .
 git commit -m "Updated Flask app"
 git push origin master
 ```
 
-### 2️⃣ Jenkins Pipeline Execution
-- Pulls latest GitHub commit
-- Copies files to EC2 via SSH
-- Installs dependencies (`requirements.txt`)
-- Starts Flask server in background
+### 2. Jenkins Pipeline Execution
+
+* Pulls latest GitHub commit
+* Copies files to EC2 via SSH
+* Installs dependencies (`requirements.txt`)
+* Starts Flask server in background
 
 ---
 
-## ⚙️ Jenkins Configuration
+## Jenkins Configuration
 
-### 🧩 Credentials Setup
+### Credentials Setup
+
 Go to: `Manage Jenkins → Credentials → System → Global credentials`
 
 Add:
-- **Kind:** SSH Username with private key
-- **ID:** `check-ssh-key`
-- **Username:** `ubuntu`
-- **Private Key:** (EC2 key content)
 
-![Jenkins Credentials](img/credentials.png)
+* **Kind:** SSH Username with private key
+* **ID:** `check-ssh-key`
+* **Username:** `ubuntu`
+* **Private Key:** (EC2 key content)
 
-### 🏗️ Pipeline Configuration
+![Jenkins Credentials Setup](img/credentials.png)
+
+---
+
+### Pipeline Configuration
 
 **Jenkinsfile**
+
 ```groovy
 pipeline {
     agent any
@@ -131,14 +144,12 @@ pipeline {
 
 ![Jenkins Configuration](img/jenkins-cofiguration.png)
 
-### 🧭 Jenkins Dashboard
-![Jenkins Dashboard](img/jenkins-dash.png)
-
 ---
 
-## 💻 Application Details
+## Application Details
 
-### 📂 Project Structure
+### Project Structure
+
 ```
 pythonapp/
 ├── app.py               # Flask Application
@@ -148,39 +159,41 @@ pythonapp/
 └── README.md            # Documentation
 ```
 
-![Commit History](img/commits.png)
-
 ---
 
-## ☁️ AWS EC2 Configuration
-- **Instance Name:** `pythonapp`
-- **Type:** `t2.micro`
-- **Region:** `ap-south-1 (Mumbai)`
-- **Public IP:** `3.110.103.246`
-- **Private IP:** `172.31.12.114`
+## AWS EC2 Configuration
+
+* **Instance Name:** `pythonapp`
+* **Type:** `t2.micro`
+* **Region:** `ap-south-1 (Mumbai)`
+* **Public IP:** `3.110.103.246`
+* **Private IP:** `172.31.12.114`
 
 ![AWS EC2 Instance](img/pythonappEc2.png)
 
 ---
 
-## 🌈 Flask Application UI
+## Flask Application UI
 
-### ✨ Login Page
+### Login Page
+
 ![Login Page](img/login-page.png)
 
 ---
 
-## ✅ Key Features
-- 🔁 Fully Automated Deployment Pipeline
-- 🔐 Secure Login & Signup with Password Hashing
-- 🧩 SQLite Database for User Storage
-- 🖥️ Modern Animated UI
-- ⚙️ Continuous Integration with Jenkins
-- ☁️ AWS EC2 Cloud Hosting
+## Key Features
+
+* Fully Automated Deployment Pipeline
+* Secure Login & Signup with Password Hashing
+* SQLite Database for User Storage
+* Modern Animated UI
+* Continuous Integration with Jenkins
+* AWS EC2 Cloud Hosting
 
 ---
 
-## 🎯 Workflow Summary
+## Workflow Summary
+
 1. Developer commits & pushes code to GitHub
 2. Jenkins auto-triggers build pipeline
 3. Jenkins SSHs into EC2, deploys latest code
@@ -189,16 +202,20 @@ pythonapp/
 
 ---
 
-## 🧾 Logs & Debug
+## Logs & Debug
+
 To check logs on EC2:
+
 ```bash
 cd /home/ubuntu/pythonapp
 cat app.log
 ```
-
 ---
 
-## 📞 Contact
-**Raj Ahire**  
-📧 Email: [rajahire326@gmail.com](rajahire326@gamil.com)
-🌐 GitHub: [https://github.com/RajAhire-1](https://github.com/RajAhire-1)
+## Contact
+
+**Raj Ahire**
+Email: [rajahire326@gmail.com](mailto:rajahire326@gmail.com)
+GitHub: [https://github.com/RajAhire-1](https://github.com/RajAhire-1)
+
+
