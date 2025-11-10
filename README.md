@@ -169,29 +169,6 @@ pythonapp/
 
 ---
 
-## ⚙️ Manual Deployment (Optional)
-If you wish to deploy manually:
-
-```bash
-# Clone repository
-git clone https://github.com/RajAhire-1/pythonapp.git
-cd pythonapp
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the application
-python3 app.py --host=0.0.0.0 --port=5000
-```
-
-Then open in browser: 👉 `http://<EC2_PUBLIC_IP>:5000`
-
----
-
 ## ✅ Key Features
 - 🔁 Fully Automated Deployment Pipeline
 - 🔐 Secure Login & Signup with Password Hashing
